@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Gallery</title>
+    <style>
+        /* General Styling */
+        body {
+            background-color: rgb(10, 10, 10);
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        /* Gallery Styling */
+        #gallery {
+            height: 140vmax;
+            width: 140vmax;
+            position: absolute;
+        }
+
+        .tile {
+            border-radius: 1vmax;
+            position: absolute;
+            transition: transform 800ms ease;
+        }
+
+        .tile:hover {
+            transform: scale(1.1);
+        }
+
+        .tile:hover > img {
+            opacity: 1;
+            transform: scale(1.01);
+        }
+
+        .tile > img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            border-radius: inherit;
+            opacity: 0;
+            transition: opacity 800ms ease, transform 800ms ease;
+        }
+
+        /* Tile Positions */
+        .tile:nth-child(1) {
+            background-color: rgb(255, 202, 251);
+            height: 14%;
+            width: 20%;
+            left: 5%;
+            top: 5%;
+        }
+
+        .tile:nth-child(2) {
+            background-color: rgb(255, 164, 250);
+            height: 24%;
+            width: 14%;
+            left: 42%;
+            top: 12%;
+        }
+
+        .tile:nth-child(3) {
+            background-color: rgb(212, 133, 226);
+            height: 18%;
+            width: 16%;
+            left: 12%;
+            top: 34%;
+        }
+
+        .tile:nth-child(4) {
+            background-color: rgb(255, 0, 255);
+            height: 14%;
+            width: 12%;
+            left: 45%;
+            top: 48%;
+        }
+
+        .tile:nth-child(5) {
+            background-color: rgb(249, 221, 254);
+            height: 16%;
+            width: 32%;
+            left: 8%;
+            top: 70%;
+        }
+
+        .tile:nth-child(6) {
+            background-color: rgb(121, 24, 113);
+            height: 24%;
+            width: 24%;
+            left: 68%;
+            top: 8%;
+        }
+
+        .tile:nth-child(7) {
+            background-color: rgb(148, 26, 144);
+            height: 16%;
+            width: 20%;
+            left: 50%;
+            top: 74%;
+        }
+
+        .tile:nth-child(8) {
+            background-color: rgb(153, 80, 148);
+            height: 24%;
+            width: 18%;
+            left: 72%;
+            top: 42%;
+        }
+
+        .tile:nth-child(9) {
+            background-color: rgb(250, 250, 250);
+            height: 10%;
+            width: 8%;
+            left: 84%;
+            top: 84%;
+        }
+
+        /* Meta Links Styling */
+        .meta-link {
+            align-items: center;
+            backdrop-filter: blur(3px);
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            bottom: 10px;
+            box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            display: inline-flex;
+            gap: 5px;
+            left: 10px;
+            padding: 10px 20px;
+            position: fixed;
+            text-decoration: none;
+            transition: background-color 400ms, border-color 400ms;
+            z-index: 10000;
+        }
+
+        .meta-link:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .meta-link > i, .meta-link > span {
+            height: 20px;
+            line-height: 20px;
+        }
+
+        .meta-link > span {
+            color: white;
+            font-family: "Rubik", sans-serif;
+            font-weight: 500;
+        }
+
+        #source-link {
+            bottom: 60px;
+        }
+
+        #source-link > i {
+            color: rgb(255, 170, 245);
+        }
+
+        #yt-link > i {
+            color: rgb(223, 199, 222);
+        }
+    </style>
+</head>
+<body>
+    <!-- Gallery -->
+    <div id="gallery">
+        <div class="tile">
+            <img src="https://i.pinimg.com/736x/f3/5d/26/f35d268e9ebfc2de94a65e4bedf3222b.jpg" alt="Gallery Image 1" />
+        </div>
+        <div class="tile">
+            <img src="https://i.pinimg.com/736x/b0/6f/b7/b06fb7bcd0437b466b80e884494aa56e.jpg" alt="Gallery Image 2" />
+        </div>
+        <div class="tile">
+            <img src="https://i.pinimg.com/736x/c9/9b/f7/c99bf71a0ea11d2b94a4abc952cef538.jpg" alt="Gallery Image 3" />
+        </div>
+        <div class="tile">
+            <img src="https://i.pinimg.com/736x/dd/48/e7/dd48e750c057fa77ba0f11ebfd2eb810.jpg" alt="Gallery Image 4" />
+        </div>
+        <div class="tile">
+            <img src="https://i.pinimg.com/736x/f9/6a/bf/f96abf5010e1946629b9a3242acdb5e9.jpg" alt="Gallery Image 5" />
+        </div>
+        <div class="tile">
+            <img src="https://i.pinimg.com/736x/a2/51/d6/a251d62a14f8158f887b29d18a0de5bf.jpg" alt="Gallery Image 6" />
+        </div>
+        <div class="tile">
+            <img src="https://i.pinimg.com/736x/51/41/59/514159af22da2337104e236947c5e82e.jpg" alt="Gallery Image 7" />
+        </div>
+        <div class="tile">
+            <img src="https://i.pinimg.com/736x/91/83/d7/9183d7a66628f0a8288ac4b698db3625.jpg" alt="Gallery Image 8" />
+        </div>
+        <div class="tile">
+            <img src="https://i.pinimg.com/736x/c8/5d/7a/c85d7adf6a75836b193e7440600e7af4.jpg" alt="Gallery Image 9" />
+        </div>
+    </div>
+
+    <!-- Links -->
+    <a id="source-link" class="meta-link" href="https://palette.supply" target="_blank">
+        <i class="fa-solid fa-link"></i>
+        <span>Source</span>
+    </a>
+    <a id="yt-link" class="meta-link" href="https://youtu.be/GHZBa_R93ag" target="_blank">
+        <i class="fa-brands fa-youtube"></i>
+        <span>Tutorial</span>
+    </a>
+
+    <script>
+        // Gallery Pan Effect
+        const gallery = document.getElementById("gallery");
+
+        window.onmousemove = (e) => {
+            const mouseX = e.clientX,
+                  mouseY = e.clientY;
+
+            const xDecimal = mouseX / window.innerWidth,
+                  yDecimal = mouseY / window.innerHeight;
+
+            const maxX = gallery.offsetWidth - window.innerWidth,
+                  maxY = gallery.offsetHeight - window.innerHeight;
+
+            const panX = maxX * xDecimal * -1,
+                  panY = maxY * yDecimal * -1;
+
+            gallery.animate(
+                { transform: `translate(${panX}px, ${panY}px)` },
+                { duration: 4000, fill: "forwards", easing: "ease" }
+            );
+        };
+    </script>
+</body>
+</html>
